@@ -1,0 +1,15 @@
+name: deploy-ml-model
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - scikit-learn=1.2.2
+  - pandas=2.0.0
+  - numpy=1.24.2
+  - pytest=7.3.1
+  - jupyter=1.0.0
+  - jupyterlab=3.5.3
+  - fastapi=0.95.1
+  - uviron=0.21.1
