@@ -46,5 +46,3 @@ y_test_pred = inference(model, X_test)
 precision, recall, fbeta = compute_model_metrics(y_test, y_test_pred)
 logging.info("Precision %s, Recall %s, fbeta %s", precision, recall, fbeta)
 save_training_artifacts("./model", model, encoder, lb)
-
-
