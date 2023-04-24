@@ -4,7 +4,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from ml.data import process_data, slice_data
-from ml.model import train_model, inference, save_training_artifacts, compute_model_metrics
+from ml.model import (
+    train_model, inference, save_training_artifacts, compute_model_metrics
+)
 
 logging.basicConfig(
     filename="./log/train_model.log",
@@ -29,7 +31,10 @@ def log_slice_metrics(data, model, encoder, lb, categorical_features):
         )
         y_pred = inference(model, X)
         precision, recall, fbeta = compute_model_metrics(y, y_pred)
-        log_string = f"Metrics for slice {feature}|{cls}: Precision {precision}, Recall {recall}, fbeta {fbeta}"
+        log_string = (
+            f"Metrics for slice {feature}|{cls}: "
+            f"Precision {precision}, Recall {recall}, fbeta {fbeta}"
+        )
         logging.info(log_string)
         f.write(f"{log_string}\n")
     f.close()
@@ -38,7 +43,9 @@ def log_slice_metrics(data, model, encoder, lb, categorical_features):
 # Add code to load in the data.
 logging.info("Reading data from file.")
 data = pd.read_csv('./data/census.csv')
-logging.info("Reading data from file successful. Shape of the dataset: %s.", data.shape)
+logging.info(
+    "Reading data from file successful. Shape of the dataset: %s.",
+    data.shape)
 
 # Optional enhancement, use K-fold cross validation instead of a
 # train-test split.
