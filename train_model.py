@@ -38,7 +38,7 @@ def log_slice_metrics(data, model, encoder, lb, categorical_features):
 # Add code to load in the data.
 logging.info("Reading data from file.")
 data = pd.read_csv('./data/census.csv')
-logging.info("Reading data from file successful.")
+logging.info("Reading data from file successful. Shape of the dataset: %s.", data.shape)
 
 # Optional enhancement, use K-fold cross validation instead of a
 # train-test split.
