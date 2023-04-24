@@ -73,3 +73,10 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+
+def slice_data(data, categorical_features):
+    for categorical_feature in categorical_features:
+        for cls in data[categorical_feature].unique():
+            slice = data[data[categorical_feature] == cls]
+            yield categorical_feature, cls, slice
