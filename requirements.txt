@@ -8,3 +8,4 @@ fastapi==0.95.1
 uvicorn==0.21.1
 flake8==6.0.0
 gunicorn
+httpx==0.24.0
