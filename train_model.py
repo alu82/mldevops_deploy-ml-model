@@ -1,3 +1,10 @@
+'''
+Module for training and evaluating a ml model, to predict the salary of
+an adult.
+Author: alu82
+Date: April 2023
+'''
+
 import logging
 import pandas as pd
 

@@ -1,4 +1,4 @@
-from joblib import dump
+from joblib import dump, load
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 
@@ -69,3 +69,11 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+
+def load_training_artifacts(path):
+    model = load(f'{path}/model.joblib')
+    encoder = load(f'{path}/encoder.joblib')
+    lb = load(f'{path}/lb.joblib')
+
+    return model, encoder, lb
