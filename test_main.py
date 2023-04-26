@@ -2,10 +2,11 @@ from fastapi.testclient import TestClient
 import pytest
 
 # import api app
-from main import app, Adult
+from main import app
 
 # Instantiate the testing client with our app.
 client = TestClient(app)
+
 
 @pytest.fixture(name="adult_high_salary")
 def create_adult_high_salary():
@@ -29,6 +30,7 @@ def create_adult_high_salary():
         "native_country": "United-States"
     }
 
+
 @pytest.fixture(name="adult_low_salary")
 def create_adult_low_salary():
     '''
@@ -51,15 +53,18 @@ def create_adult_low_salary():
         "native_country": "United-States"
     }
 
+
 def test_root():
     r = client.get("/")
     assert r.status_code == 200
     assert r.json() == {"greeting": "Hello World!"}
 
+
 def test_prediction_high_salary(adult_high_salary):
     r = client.post("/adult/", json=adult_high_salary)
     assert r.status_code == 200
     assert r.json()["salary-prediction"] == 1
+
 
 def test_prediction_low_salary(adult_low_salary):
     r = client.post("/adult/", json=adult_low_salary)
